@@ -1,0 +1,18 @@
+@* @model System.Diagnostics.Process *@
+@{
+    ViewData["Title"] = "File Details Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">@ViewData["Title"]</h1>
+    @if (ViewBag.Content != null)
+    {
+        <pre>@ViewBag.Content</pre>
+    }
+    else if (ViewBag.Error != null)
+    {
+        <div class="alert alert-danger">@ViewBag.Error</div>
+    }
+
+
+</div>
