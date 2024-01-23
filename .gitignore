@@ -36,7 +36,7 @@ bld/
 [Ll]ogs/
 
 # my custom ignore additions
-[Dd]ist
+# [Dd]ist
 appsettings.Development.json
 
 # Visual Studio 2015/2017 cache/options directory
