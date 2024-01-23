@@ -25,6 +25,7 @@ public class FileController : Controller
                              .Select(Path.GetFileName)
                              .OrderBy(f => f) // sort in ascending order
                              .ToArray();
+    // var files = Directory.GetFiles(path).Select(f => Path.GetFileNameWithoutExtension(f)).ToArray();
 
         ViewBag.Files = files;
 
@@ -32,10 +33,15 @@ public class FileController : Controller
         return View();
     }
 
-    public IActionResult Display(string filename)
+// [HttpGet("Content/{filename}")]
+    public IActionResult Content(string filename)
     {
+    try
+        {
+
         var fileNameWithExtension = $"{filename}.txt";
         var filePath = Path.Combine(_env.ContentRootPath, "TextFiles", fileNameWithExtension);
+        // var filePath = Path.Combine(_env.ContentRootPath, "TextFiles", filename + ".txt");
 
         // _logger.LogInformation("Attempting to display file at path: " + filePath);
 
@@ -43,7 +49,13 @@ public class FileController : Controller
         // {
         var content = System.IO.File.ReadAllText(filePath);
         ViewBag.Content = content;
-        return View();
+        return View(model: content);
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Error reading file");
+            return StatusCode(500, "An error occurred while reading the file.");
+        }
         // }
         // else
         // {

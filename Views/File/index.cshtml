@@ -10,7 +10,8 @@
 
     @foreach (var file in files!)
     {
-        <p><a asp-controller="File" asp-action="Display" asp-route-filename="@file.Replace(".txt", "")">@file</a></p>
+        @* <p><a asp-controller="File" asp-action="Content" asp-route-filename="@file">@file</a></p> *@
+        <p><a asp-controller="File" asp-action="Content" asp-route-filename="@file.Replace(".txt", "")">@file</a></p>
         @* <a href="@Url.RouteUrl("fileDisplay", new { filename = file })">@file</a> *@
 
     }

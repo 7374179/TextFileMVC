@@ -22,8 +22,8 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "fileDisplay",
-    pattern: "File/Display/{filename}",
-    defaults: new { controller = "File", action = "Display" });
+    pattern: "File/Content/{filename}",
+    defaults: new { controller = "File", action = "Content" });
 
 app.MapControllerRoute(
     name: "default",
